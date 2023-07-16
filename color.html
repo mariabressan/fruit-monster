@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Color</title>
+    <style>
+    body {
+    text-align: center;
+    background-color: rgb(240, 255, 242);
+    }
+    #smile {
+    position: absolute;
+    }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+<h1 id='smile'>:)</h1>
+
+<script>
+    var clicked = document.getElementById('smile');
+    var whenClicked = function() {
+        var now = new Date();
+        var milli = now.getMilliseconds();
+        var rcolor = milli;
+        var gcolor = 1000-(milli^(2/3));
+        var bcolor = 1000/((milli%31)^2);
+        var color = [rcolor, gcolor, bcolor];
+        console.log(color);
+        clicked.style.margin += 50*(Math.cos(rcolor)^2) + "px";
+        document.body.style.backgroundColor = 'rgb(' + color + ')';}
+    clicked.addEventListener('click', whenClicked);
+</script>
+
+
+</body>
+</html> 
